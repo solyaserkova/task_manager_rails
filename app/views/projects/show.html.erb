@@ -4,4 +4,5 @@
 </p>
 
 <td><%= link_to 'Edit', edit_project_path %></td>
+<td><%= link_to 'Delete', project_path, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
 <td><%= link_to 'Back', projects_path %></td>
