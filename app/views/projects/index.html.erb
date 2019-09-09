@@ -2,16 +2,16 @@
 
 <td><%= link_to 'New', new_project_path %></td>
 
-<table>
+<table class="table">
   <tr>
-    <th>Name</th>
-    <th></th>
+    <th scope="col">Name</th>
+    <th scope="col"></th>
   </tr>
 
   <% @projects.each do |project| %>
     <tr>
-      <td><%= project.name %></td>
-      <td><%= link_to 'Show', project_path(project) %></td>
+      <td scope="row"><%= project.name %></td>
+      <td scope="row"><%= link_to 'Show', project_path(project) %></td>
     </tr>
   <% end %>
 </table>
