@@ -3,6 +3,27 @@
   <%= @project.name %>
 </p>
 
+<p>Tasks</p>
+<% @project.tasks.each do |task| %>
+  <p>
+    <strong>name:</strong>
+    <%= task.name %>
+  </p>
+<% end %>
+
+<p>Add a task:</p>
+<%= form_for [ @project, @project.tasks.build ] do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+
+
 <td><%= link_to 'Edit', edit_project_path %></td>
 <td><%= link_to 'Delete', project_path, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
 <td><%= link_to 'Back', projects_path %></td>
