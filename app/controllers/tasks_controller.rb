@@ -13,11 +13,12 @@ class TasksController < ApplicationController
   end
 
   def edit
-    # @project = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
   end
 
   def update
+    @project = Project.find(params[:project_id])
     @task = @project.tasks.find(params[:id])
     if @task.update(task_params)
       redirect_to @project

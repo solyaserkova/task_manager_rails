@@ -1,5 +1,5 @@
 <h1>Edit task</h1>
-<%= form_for [ @project, @project.tasks.build ] do |form| %>
+<%= form_for @task, :url => project_task_path(@project,@task), :html => { :method => "patch" } do |form| %>
   <p>
     <%= form.label 'Change name' %><br>
     <%= form.text_field :name %><br>
