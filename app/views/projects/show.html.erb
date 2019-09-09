@@ -1,29 +1,37 @@
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<h1>
+  <strong><%= @project.name %></strong>
+</h1>
 
-<p>Tasks</p>
-<% @project.tasks.each do |task| %>
-  <p>
-    <strong>name:</strong>
-    <%= task.name %>
-  </p>
-<% end %>
+<table class="table">
+  <tr>
+    <th scope="col">Task</th>
+    <th scope="col">Status</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+  </tr>
 
-<p>Add a task:</p>
+  <% @project.tasks.each do |task| %>
+    <tr>
+      <td scope="row"><%= task.name %></td>
+      <td scope="row"><%= task.status %></td>
+      <th scope="row"><%= link_to 'Edit', [:edit, task.project, task]  %></th>
+      <th scope="row"><%= link_to 'Delete', [task.project, task], method: :delete, data: { confirm: 'Are you sure?' } %></th>
+    </tr>
+  <% end %>
+</table>
+
 <%= form_for [ @project, @project.tasks.build ] do |form| %>
   <p>
-    <%= form.label :name %><br>
+    <%= form.label 'Add task' %><br>
     <%= form.text_field :name %>
+    <%= form.check_box  :status %>
   </p>
   <p>
     <%= form.submit %>
   </p>
 <% end %>
 
-
-
-<td><%= link_to 'Edit', edit_project_path %></td>
-<td><%= link_to 'Delete', project_path, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
-<td><%= link_to 'Back', projects_path %></td>
+<%= link_to 'Edit', edit_project_path %><br>
+<%= link_to 'Delete', project_path, method: :delete, data: { confirm: 'Are you sure?' }
+%><br>
+<%= link_to 'Back', projects_path %>

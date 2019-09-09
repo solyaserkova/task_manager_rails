@@ -1,0 +1,14 @@
+<h1>Edit task</h1>
+<%= form_for [ @project, @project.tasks.build ] do |form| %>
+  <p>
+    <%= form.label 'Change name' %><br>
+    <%= form.text_field :name %><br>
+    <%= form.label 'Change status' %>
+    <%= form.check_box  :status %>
+  </p>
+  <p>
+    <%= form.submit 'Update task' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', project_path(@project) %>
