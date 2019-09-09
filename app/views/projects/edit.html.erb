@@ -1,2 +1,11 @@
-<h1>Projects#edit</h1>
-<p>Find me in app/views/projects/edit.html.erb</p>
+<h1>Edit project</h1>
+<%= form_for @project do |form| %>
+  <p>
+    <%= form.label 'name' %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
