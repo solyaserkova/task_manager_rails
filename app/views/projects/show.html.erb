@@ -6,6 +6,8 @@
   <tr>
     <th scope="col"><%= link_to 'Task', :sort => 'task' %></th>
     <th scope="col">Status</th>
+    <th scope="col">Created</th>
+    <th scope="col">Deadline</th>
     <th scope="col"></th>
     <th scope="col"></th>
   </tr>
@@ -14,6 +16,8 @@
     <tr>
       <td scope="row"><%= task.name %></td>
       <td scope="row"><%= task.status %></td>
+      <td scope="row"><%= task.created_at.strftime("%F") %></td>
+      <td scope="row"><%= task.deadline %></td>
       <th scope="row"><%= link_to 'Edit', edit_project_task_path(@project, task.id) %></th>
       <th scope="row"><%= link_to 'Delete', project_task_path(@project, task.id), method: :delete, data: { confirm: 'Are you sure?' } %></th>
     </tr>
@@ -25,6 +29,7 @@
     <%= form.label 'Add task' %><br>
     <%= form.text_field :name %>
     <%= form.check_box  :status %>
+    <%= form.date_field  :deadline %>
   </p>
   <p>
     <%= form.submit %>

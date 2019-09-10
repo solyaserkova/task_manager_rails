@@ -1,10 +1,12 @@
 <h1>Edit task</h1>
 <%= form_for @task, :url => project_task_path(@project,@task) do |form| %>
   <p>
-    <%= form.label 'Change name' %><br>
+    <%= form.label 'Change name' %>
     <%= form.text_field :name %><br>
     <%= form.label 'Change status' %>
-    <%= form.check_box  :status %>
+    <%= form.check_box  :status %><br>
+    <%= form.label 'Change deadline' %>
+    <%= form.date_field  :deadline %>
   </p>
   <p>
     <%= form.submit 'Update task' %>
